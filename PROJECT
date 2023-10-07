@@ -7,4 +7,23 @@ layout:
 - go.kubebuilder.io/v4
 projectName: cluster-api-provider-mgc
 repo: github.com/jfcavalcante/cluster-api-provider-mgc
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: cluster.x-k8s.io
+  group: infrastructure
+  kind: MGCCluster
+  path: github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: cluster.x-k8s.io
+  group: infrastructure
+  kind: MGCMachine
+  path: github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1
+  version: v1alpha1
 version: "3"

@@ -1,0 +1,12 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha1
+kind: MGCMachine
+metadata:
+  labels:
+    app.kubernetes.io/name: mgcmachine
+    app.kubernetes.io/instance: mgcmachine-sample
+    app.kubernetes.io/part-of: cluster-api-provider-mgc
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: cluster-api-provider-mgc
+  name: mgcmachine-sample
+spec:
+  # TODO(user): Add fields here
