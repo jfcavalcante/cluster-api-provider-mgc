@@ -28,6 +28,8 @@ type MGCClusterSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
+	APIServerFloatingIP string `json:"apiServerFloatingIP,omitempty"`
+
 	// Foo is an example field of MGCCluster. Edit mgccluster_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
 }
@@ -36,6 +38,7 @@ type MGCClusterSpec struct {
 type MGCClusterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Ready bool `json:"ready"`
 }
 
 //+kubebuilder:object:root=true

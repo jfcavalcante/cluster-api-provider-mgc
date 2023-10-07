@@ -34,6 +34,8 @@ spec:
           spec:
             description: MGCClusterSpec defines the desired state of MGCCluster
             properties:
+              apiServerFloatingIP:
+                type: string
               foo:
                 description: Foo is an example field of MGCCluster. Edit mgccluster_types.go
                   to remove/update
@@ -41,6 +43,14 @@ spec:
             type: object
           status:
             description: MGCClusterStatus defines the observed state of MGCCluster
+            properties:
+              ready:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: boolean
+            required:
+            - ready
             type: object
         type: object
     served: true
