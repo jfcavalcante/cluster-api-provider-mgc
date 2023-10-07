@@ -27,26 +27,26 @@ import (
 	infrastructurev1alpha1 "github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1"
 )
 
-// MGCMachineReconciler reconciles a MGCMachine object
-type MGCMachineReconciler struct {
+// MGCMachineTemplateReconciler reconciles a MGCMachineTemplate object
+type MGCMachineTemplateReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachines,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachines/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachines/finalizers,verbs=update
+//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachinetemplates,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachinetemplates/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=infrastructure.cluster.x-k8s.io,resources=mgcmachinetemplates/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
-// the MGCMachine object against the actual cluster state, and then
+// the MGCMachineTemplate object against the actual cluster state, and then
 // perform operations to make the cluster state reflect the state specified by
 // the user.
 //
 // For more details, check Reconcile and its Result here:
 // - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.16.0/pkg/reconcile
-func (r *MGCMachineReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+func (r *MGCMachineTemplateReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
 	// TODO(user): your logic here
@@ -55,11 +55,8 @@ func (r *MGCMachineReconciler) Reconcile(ctx context.Context, req ctrl.Request) 
 }
 
 // SetupWithManager sets up the controller with the Manager.
-func (r *MGCMachineReconciler) SetupWithManager(mgr ctrl.Manager) error {
+func (r *MGCMachineTemplateReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
-		For(&infrastructurev1alpha1.MGCMachine{}).
+		For(&infrastructurev1alpha1.MGCMachineTemplate{}).
 		Complete(r)
 }
-
-func reconcileNormal()
-func reconcileDelete()

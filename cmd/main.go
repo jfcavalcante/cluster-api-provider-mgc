@@ -103,6 +103,31 @@ func main() {
 		setupLog.Error(err, "unable to create controller", "controller", "MGCMachine")
 		os.Exit(1)
 	}
+	if err = (&controller.MGCMachineTemplateReconciler{
+		Client: mgr.GetClient(),
+		Scheme: mgr.GetScheme(),
+	}).SetupWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create controller", "controller", "MGCMachineTemplate")
+		os.Exit(1)
+	}
+	if os.Getenv("ENABLE_WEBHOOKS") != "false" {
+		if err = (&infrastructurev1alpha1.MGCCluster{}).SetupWebhookWithManager(mgr); err != nil {
+			setupLog.Error(err, "unable to create webhook", "webhook", "MGCCluster")
+			os.Exit(1)
+		}
+	}
+	if os.Getenv("ENABLE_WEBHOOKS") != "false" {
+		if err = (&infrastructurev1alpha1.MGCMachine{}).SetupWebhookWithManager(mgr); err != nil {
+			setupLog.Error(err, "unable to create webhook", "webhook", "MGCMachine")
+			os.Exit(1)
+		}
+	}
+	if os.Getenv("ENABLE_WEBHOOKS") != "false" {
+		if err = (&infrastructurev1alpha1.MGCMachineTemplate{}).SetupWebhookWithManager(mgr); err != nil {
+			setupLog.Error(err, "unable to create webhook", "webhook", "MGCMachineTemplate")
+			os.Exit(1)
+		}
+	}
 	//+kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {

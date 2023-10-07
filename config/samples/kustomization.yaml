@@ -2,4 +2,5 @@
 resources:
 - infrastructure_v1alpha1_mgccluster.yaml
 - infrastructure_v1alpha1_mgcmachine.yaml
+- infrastructure_v1alpha1_mgcmachinetemplate.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples

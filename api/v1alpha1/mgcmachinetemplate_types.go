@@ -20,52 +20,45 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-	MachineFinalizer = "mgcmachine.infrastructure.cluster.x-k8s.io"
-)
-
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// MGCClusterSpec defines the desired state of MGCCluster
-type MGCClusterSpec struct {
+// MGCMachineTemplateSpec defines the desired state of MGCMachineTemplate
+type MGCMachineTemplateSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	APIServerFloatingIP string `json:"apiServerFloatingIP,omitempty"`
-
-	// Foo is an example field of MGCCluster. Edit mgccluster_types.go to remove/update
+	// Foo is an example field of MGCMachineTemplate. Edit mgcmachinetemplate_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
 }
 
-// MGCClusterStatus defines the observed state of MGCCluster
-type MGCClusterStatus struct {
+// MGCMachineTemplateStatus defines the observed state of MGCMachineTemplate
+type MGCMachineTemplateStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	Ready bool `json:"ready"`
 }
 
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// MGCCluster is the Schema for the mgcclusters API
-type MGCCluster struct {
+// MGCMachineTemplate is the Schema for the mgcmachinetemplates API
+type MGCMachineTemplate struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   MGCClusterSpec   `json:"spec,omitempty"`
-	Status MGCClusterStatus `json:"status,omitempty"`
+	Spec   MGCMachineTemplateSpec   `json:"spec,omitempty"`
+	Status MGCMachineTemplateStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// MGCClusterList contains a list of MGCCluster
-type MGCClusterList struct {
+// MGCMachineTemplateList contains a list of MGCMachineTemplate
+type MGCMachineTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []MGCCluster `json:"items"`
+	Items           []MGCMachineTemplate `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&MGCCluster{}, &MGCClusterList{})
+	SchemeBuilder.Register(&MGCMachineTemplate{}, &MGCMachineTemplateList{})
 }

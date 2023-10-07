@@ -17,6 +17,10 @@ resources:
   kind: MGCCluster
   path: github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1
   version: v1alpha1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
 - api:
     crdVersion: v1
     namespaced: true
@@ -26,4 +30,21 @@ resources:
   kind: MGCMachine
   path: github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1
   version: v1alpha1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: cluster.x-k8s.io
+  group: infrastructure
+  kind: MGCMachineTemplate
+  path: github.com/jfcavalcante/cluster-api-provider-mgc/api/v1alpha1
+  version: v1alpha1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
 version: "3"
